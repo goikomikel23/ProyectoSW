@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <script>
+            function vervalores(){
+                var sAux="";
+                var frm = document.getElementById("registro"); for (i=1;i<frm.elements.length;i++)
+                {
+                    sAux += "NOMBRE: " + frm.elements[i].name + " "; sAux += "VALOR: " + frm.elements[i].value + "\n" ;
+                } alert(sAux);
+            } </script>
+        <title>"Registro"</title>
+    </head>
+    <body>
+     <form id='registro' name='registro' onSubmit='vervalores()'>
+        <p>Nombre*:
+            <input type="text" name="nombre" value="" />
+        </p>
+        
+        <p>Apellidos*:
+            <input type="text" name="apellidos" value="" />
+        </p>
+        
+        <p>Email*:
+            <input type="email" name="Email" value="" />
+        </p>
+        
+        <p>Password*:
+            <input type="password" name="Pass" value="" />
+        </p>
+        
+        <p>Tel&eacute;fono
+            <input type="tel" name="apellidos" value="" />
+        </p>
+        
+        <p>
+            <input type="radio" name="especiality" value="IS">Ingenier&iacute;a de Software<br>
+            <input type="radio" name="especiality" value="IC">Ingenier&iacute;a de Computadores<br>
+            <input type="radio" name="especiality" value="C">Computaci&oacute;n<br>
+            
+        </p>
+        
+        <p>Tecnolog&iacute;as y Herramientas en las que esta interesado:
+            </p>
+        
+         <textarea name="Intereses" value="" height='50%' width='50%'></textarea>
+         <br/>
+         
+         <p>
+             Foto de Perfil:
+         <input type="file" name="Foto" value=""/>
+         </p>
+         
+        
+        
+ 
+        <input type="submit" value="Enviar" />
+    </form>
+    </body>
+
+
+</html>
