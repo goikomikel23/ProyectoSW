@@ -1,61 +1,107 @@
 <html>
-    <head>
-        <script>
-            function vervalores(){
-                var sAux="";
-                var frm = document.getElementById("registro"); for (i=1;i<frm.elements.length;i++)
-                {
-                    sAux += "NOMBRE: " + frm.elements[i].name + " "; sAux += "VALOR: " + frm.elements[i].value + "\n" ;
-                } alert(sAux);
-            } </script>
-        <title>"Registro"</title>
-    </head>
-    <body>
-     <form id='registro' name='registro' onSubmit='vervalores()'>
-        <p>Nombre*:
-            <input type="text" name="nombre" value="" />
-        </p>
-        
-        <p>Apellidos*:
-            <input type="text" name="apellidos" value="" />
-        </p>
-        
-        <p>Email*:
-            <input type="email" name="Email" value="" />
-        </p>
-        
-        <p>Password*:
-            <input type="password" name="Pass" value="" />
-        </p>
-        
-        <p>Tel&eacute;fono
-            <input type="tel" name="apellidos" value="" />
-        </p>
-        
-        <p>
-            <input type="radio" name="especiality" value="IS">Ingenier&iacute;a de Software<br>
-            <input type="radio" name="especiality" value="IC">Ingenier&iacute;a de Computadores<br>
-            <input type="radio" name="especiality" value="C">Computaci&oacute;n<br>
-            
-        </p>
-        
-        <p>Tecnolog&iacute;as y Herramientas en las que esta interesado:
-            </p>
-        
-         <textarea name="Intereses" value="" height='50%' width='50%'></textarea>
-         <br/>
-         
-         <p>
-             Foto de Perfil:
-         <input type="file" name="Foto" value=""/>
-         </p>
-         
-        
-        
- 
-        <input type="submit" value="Enviar" />
-    </form>
-    </body>
 
+<head>
+    <title>Registro</title>
+    <script>
+        function vervalores() {
+            if (obligatorios() && validarValores()) {
+
+                var sAux = "";
+                var frm = document.getElementById("registro");
+                for (i = 1; i < frm.elements.length; i++) {
+                    sAux += "NOMBRE: " + frm.elements[i].name + " ";
+                    sAux += "VALOR: " + frm.elements[i].value + "\n";
+                }
+                alert(sAux);
+            }
+        }
+
+        function obligatorios() {
+
+            var frm = document.getElementById("registro");
+
+            for (i = 1; i < frm.elements.length; i++) {
+                if (frm.elements[i].value == "" && frm.elements[i].id != "imagen" && frm.elements[i].id != "intereses") {
+                    alert("Debes rellenar todos los campos");
+                    return false;
+                }
+
+            }
+
+            if ((document.getElementById("IC").checked == false) && (document.getElementById("IS").checked == false) && (document.getElementById("ICM").checked == false)) {
+                alert("Necesitas seleccionar especialidad");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function validarValores() {
+
+            var pass = document.getElementById("password").value;
+            var name = document.getElementById("nombre").value;
+            var ape = document.getElementById("apellidos").value;
+            var mail = document.getElementById("mail").value;
+            var tel = document.getElementById("telefono").value;
+
+            var regmail = /[a-z]+[0-9][0-9][0-9]@ikasle\.ehu\.(es||eus)/;
+            var regtel = /^\d{9}$/;
+            var regname = /[A-z]+/;
+            var regape = /[A-z]+ [A-z]+/;
+
+            if (pass.length < 6) {
+                alert("La contraseña debe contener al menos 6 caracteres");
+                return false;
+            } else if (!regmail.test(mail)) {
+                alert("El email no es correcto");
+                return false;
+            } else if (!regtel.test(tel)) {
+                alert("El telefono no es correcto");
+                return false;
+            } else if ((!regape.test(ape)) || (!regname.test(name))) {
+                alert("Debes ingresar un nombre y dos apellidos");
+                return false;
+            } else {
+                return true;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <form id='registro' name='registro' onSubmit='vervalores()'>
+        <p>Nombre*:
+            <input type="text" name="nombre" id="nombre" value="">
+        </p>
+        <p>Apellidos*:
+            <input type="text" name="apellidos" id="apellidos" value="">
+        </p>
+        <p>E-mail*:
+            <input type="text" name="mail" id="mail" value="">
+        </p>
+        <p>Password*:
+            <input type="password" name="password" id="password" value="">
+        </p>
+        <p>Tel&eacute;fono*:
+            <input type="text" name="telefono" id="telefono" value="">
+        </p>
+        <p>Especialidad*:</br>
+            <input type="radio" name="especialidad" id="IC">Ingenier&iacute;a de computadores</br>
+            <input type="radio" name="especialidad" id="IS">Ingenier&iacute;a del software</br>
+            <input type="radio" name="especialidad" id="ICM">Ingenier&iacute;a de computacion</br>
+        </p>
+        <p>Herramientas y tecnologia en las que estas interesado</br>
+            <textarea rows="4" cols="50" name="intereses" id="intereses"></textarea>
+        </p>
+        <p>Foto de perfil:
+            <input type="file" name="imagen" id="imagen" value="">
+        </p>
+
+        <p>
+            <input type="submit" value="Enviar" ;>
+        </p>
+    </form>
+</body>
 
 </html>
