@@ -5,12 +5,6 @@
     <script>
         
         function vervalores() {
-                    
-            var x = document.getElementById("OtraEspe");
-            
-            x.addEventListener('click',mostrarText);
-                
-            }
             
             if (obligatorios() && validarValores()) {
 
@@ -75,10 +69,17 @@
 
         }
         
+        /*Intento Opcional1 - Lab2
+        
         function mostrarText() {
-            var y = document.getElementById("NEspe");
+           
+            var x = document.getElementById("OtraEspe");
+            var n = 
+            x.appendChild(n);
             
-        }
+            
+            
+        }*/
         
         
     </script>
@@ -105,8 +106,7 @@
             <input type="radio" name="especialidad" id="IC"/>Ingenier&iacute;a de computadores</br>
             <input type="radio" name="especialidad" id="IS"/>Ingenier&iacute;a del software</br>
             <input type="radio" name="especialidad" id="ICM"/>Ingenier&iacute;a de computacion</br>
-            <input type="radio" name="especialidad" id="OtraEspe"/>Otra especialidad:
-            <input type="hidden" name="especialidad" id="NEspe" value=""/>
+            <input type="radio" name="especialidad" id="OtraEspe" onclick="mostrarText()"/>Otra especialidad:
             
         </p>
         <p>Herramientas y tecnologia en las que estas interesado</br>
