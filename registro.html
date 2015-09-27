@@ -69,17 +69,19 @@
 
         }
         
-        /*Intento Opcional1 - Lab2
+        //Intento Opcional1 - Lab2
         
         function mostrarText() {
-           
-            var x = document.getElementById("OtraEspe");
-            var n = 
-            x.appendChild(n);
             
             
-            
-        }*/
+            var container = document.getElementById("radios");
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "otros";
+            input.id = "otros";
+            container.appendChild(input);
+            container.appendChild(document.createElement("br"));
+        }
         
         
     </script>
@@ -102,11 +104,12 @@
         <p>Tel&eacute;fono*:
             <input type="text" name="telefono" id="telefono" value=""/>
         </p>
-        <p>Especialidad*:</br>
+        <p id="radios">Especialidad*:</br>
             <input type="radio" name="especialidad" id="IC"/>Ingenier&iacute;a de computadores</br>
             <input type="radio" name="especialidad" id="IS"/>Ingenier&iacute;a del software</br>
             <input type="radio" name="especialidad" id="ICM"/>Ingenier&iacute;a de computacion</br>
             <input type="radio" name="especialidad" id="OtraEspe" onclick="mostrarText()"/>Otra especialidad:
+            <div id="container"/>
             
         </p>
         <p>Herramientas y tecnologia en las que estas interesado</br>
