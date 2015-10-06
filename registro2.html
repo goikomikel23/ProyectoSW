@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <script src="scripts/jquery-2.1.4.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            console.log("ready!");
+            $("#Otra").click(function () {
+                if ($("#espo").length <= 0) {
+                    $("#otras").append("<input type='text' name='especialidad' id='espo' placeholder='Otra especialidad' required>");
+                }
+            })
+
+
+            function mostrarImagen(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#profile').remove();
+                        $('#img_destino').append("<img id='profile'  src='" + e.target.result + "' heigth='15%' width='15%' >");
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#imagen").change(function () {
+                mostrarImagen(this);
+            });
+        });
+
+        function del() {
+            $("#espo").remove();
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="contenedor">
+        <form id='registro' name='registro' method="POST" action="Registrar.php">
+            <p>Nombre*:
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+            </p>
+            <p>Apellidos*:
+                <input type="text" name="apellidos" id="apellidos" placeholder="Apellido1 Apellido2" pattern="[A-z]+ [A-z]+" required>
+            </p>
+            <p>E-mail*:
+                <input type="email" name="mail" id="mail" placeholder="email@ikasle.ehu.es/eus" pattern="[a-z]+[0-9][0-9][0-9]@ikasle\.ehu\.(es||eus)" required>
+
+                </li>
+            </p>
+            <p>Password*:
+                <input type="password" name="password" id="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+            </p>
+            <p>Tel&eacute;fono*:
+                <input type="text" name="telefono" id="telefono" placeholder="Telefono" pattern="^\d{9}$" required>
+            </p>
+            <p id="esp">Especialidad*:</br>
+                <input type="radio" name="especialidad" id="IC" onclick="del()" value="Ingenieria de computadores" checked>Ingenier&iacute;a de computadores</br>
+                <input type="radio" name="especialidad" id="IS" onclick="del()" value="Ingenieria del software">Ingenier&iacute;a del software</br>
+                <input type="radio" name="especialidad" id="ICM" onclick="del()" value="Ingenieria de computacion">Ingenier&iacute;a de computacion</br>
+                <input type="radio" name="especialidad" id="Otra">Otra
+            </p>
+            <div id="otras"></div>
+            <p>Herramientas y tecnologia en las que estas interesado</br>
+                <textarea rows="4" cols="50" name="intereses" placeholder="Introduce tus intereses" id="intereses"></textarea>
+
+            </p>
+            <p>Foto de perfil:
+                <input type="File" name="imagen" id="imagen" accept="image/*">
+            </p>
+
+            <div id="img_destino"></div>
+
+            <p>
+                <input type="submit" id="Enviar" value="Enviar" ;>
+            </p>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

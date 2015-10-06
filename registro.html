@@ -3,9 +3,7 @@
 <head>
     <title>Registro</title>
     <script>
-        
         function vervalores() {
-            
             if (obligatorios() && validarValores()) {
 
                 var sAux = "";
@@ -15,7 +13,9 @@
                     sAux += "VALOR: " + frm.elements[i].value + "\n";
                 }
                 alert(sAux);
+
             }
+
         }
 
         function obligatorios() {
@@ -30,10 +30,19 @@
 
             }
 
-            if ((document.getElementById("IC").checked == false) && (document.getElementById("IS").checked == false) && (document.getElementById("ICM").checked == false)) {
+            if ((document.getElementById("IC").checked == false) && (document.getElementById("IS").checked == false) && (document.getElementById("ICM").checked == false) && (document.getElementById("Otra").checked == false)) {
                 alert("Necesitas seleccionar especialidad");
                 return false;
             } else {
+                if (document.getElementById("Otra").checked == true) {
+
+                    var caja = document.getElementById("otrae");
+                    if (caja.value == "") {
+                        alert("Debes rellenar todos los campos");
+                        return false;
+                    }
+
+                }
                 return true;
             }
         }
@@ -64,63 +73,60 @@
                 alert("Debes ingresar un nombre y dos apellidos");
                 return false;
             } else {
+
                 return true;
             }
 
         }
-        
-        //Intento Opcional1 - Lab2
-        
-        function mostrarText() {
-            
-            
-            var container = document.getElementById("radios");
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "otros";
-            input.id = "otros";
-            container.appendChild(input);
-            container.appendChild(document.createElement("br"));
+
+        function extraCampo(c) {
+
+            if (c) {
+                caja = document.createElement("input");
+                caja.setAttribute("type", "text");
+                caja.setAttribute("id", "otrae");
+                document.getElementById("esp").appendChild(caja);
+            } else {
+                caja = document.getElementById("otrae");
+                document.getElementById("esp").removeChild(caja);
+            }
+
         }
-        
-        
     </script>
 </head>
 
 <body>
-    <form id='registro' name='registro' onSubmit='vervalores()'>
+    <form id='registro' name='registro' onSubmit='return vervalores()'>
         <p>Nombre*:
-            <input type="text" name="nombre" id="nombre" value=""/>
+            <input type="text" name="nombre" id="nombre" value="">
         </p>
         <p>Apellidos*:
-            <input type="text" name="apellidos" id="apellidos" value=""/>
+            <input type="text" name="apellidos" id="apellidos" value="">
         </p>
         <p>E-mail*:
-            <input type="text" name="mail" id="mail" value=""/>
+            <input type="text" name="mail" id="mail" value="">
         </p>
         <p>Password*:
-            <input type="password" name="password" id="password" value=""/>
+            <input type="password" name="password" id="password" value="">
         </p>
         <p>Tel&eacute;fono*:
-            <input type="text" name="telefono" id="telefono" value=""/>
+            <input type="text" name="telefono" id="telefono" value="">
         </p>
-        <p id="radios">Especialidad*:</br>
-            <input type="radio" name="especialidad" id="IC"/>Ingenier&iacute;a de computadores</br>
-            <input type="radio" name="especialidad" id="IS"/>Ingenier&iacute;a del software</br>
-            <input type="radio" name="especialidad" id="ICM"/>Ingenier&iacute;a de computacion</br>
-            <input type="radio" name="especialidad" id="OtraEspe" onclick="mostrarText()"/>Otra especialidad:
-            <div id="container"/>
-            
+        <p id="esp">Especialidad*:</br>
+            <input type="radio" name="especialidad" id="IC" onclick="extraCampo(false)">Ingenier&iacute;a de computadores</br>
+            <input type="radio" name="especialidad" id="IS" onclick="extraCampo(false)">Ingenier&iacute;a del software</br>
+            <input type="radio" name="especialidad" id="ICM" onclick="extraCampo(false)">Ingenier&iacute;a de computacion</br>
+            <input type="radio" name="especialidad" id="Otra" onclick="extraCampo(true)">Otra
         </p>
         <p>Herramientas y tecnologia en las que estas interesado</br>
             <textarea rows="4" cols="50" name="intereses" id="intereses"></textarea>
         </p>
         <p>Foto de perfil:
-            <input type="file" name="imagen" id="imagen" value=""/>
+            <input type="file" name="imagen" id="imagen" value="">
         </p>
 
         <p>
-            <input type="submit" value="Enviar"/>
+            <input type="submit" value="Enviar" ;>
         </p>
     </form>
 </body>
