@@ -6,7 +6,15 @@ mysql_connect();
 mysql_connect("localhost","root","") or die(mysql_error());
 mysql_select_db("quiz") or die(mysql_error());
 	
-if (filter_var($_POST['email'], FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/[a-z]+[0-9][0-9][0-9]@ikasle\.ehu\.(es||eus)/")))){
+if (
+	(filter_var($_POST['email'], FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/[a-z]+[0-9][0-9][0-9]@ikasle\.ehu\.(es||eus)/"))))
+	&&
+	(filter_var($_POST['apellidos'], FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/[A-z]+ [A-z]+/"))))
+   	&&
+	(filter_var($_POST['password'], FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/"))))
+	&&
+	(filter_var($_POST['telefono'], FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/^\d{9}$/"))))	
+   ){
 
 
 $SQL1= "insert into Usuario (Nombre, Apellidos, Email, Password, Telefono, Especialidad, Intereses) values (
@@ -26,7 +34,7 @@ echo "1 tupla añadida";
 mysql_close();
 	
 } else {
-  echo("The email entered is not a valid email address");
+	echo "Los datos introducidos no son correctos";
 }
 
 echo "<p> <a href='VerUsuarios.php'> Ver registros </a>";
