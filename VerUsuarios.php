@@ -1,10 +1,14 @@
 <?php
 
 mysql_connect();
-mysql_connect("localhost","root","") or die(mysql_error());
-mysql_select_db("Quiz") or die(mysql_error());
+//mysql_connect("mysql.hostinger.es","u190124820_root","123456") or die(mysql_error());
+//mysql_select_db("u190124820_quiz") or die(mysql_error());
 
-$usuarios = mysql_query( "select * from usuario" );
+mysql_connect("localhost","root","") or die(mysql_error());
+mysql_select_db("quiz") or die(mysql_error());
+
+$usuarios = mysql_query( "select * from Usuario" );
+
 
 echo "
 
