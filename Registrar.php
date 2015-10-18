@@ -33,10 +33,9 @@ echo "1 tupla añadida";
 
 mysql_close();
 	
+echo "<p> <a href='VerUsuarios.php'> Ver registros </a>";
+	
 } else {
 	echo "Los datos introducidos no son correctos";
 }
-
-echo "<p> <a href='VerUsuarios.php'> Ver registros </a>";
-
 ?>
