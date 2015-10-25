@@ -1,5 +1,5 @@
 <?php
-
+	
 if(isset($_POST['Email'])){
 	
 session_start();
@@ -23,6 +23,7 @@ else{
 	echo "El usuario no existe";}
 
 }
+
 ?>
 
 <html>
