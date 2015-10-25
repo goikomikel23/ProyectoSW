@@ -15,7 +15,7 @@ mysql_select_db("quiz") or die(mysql_error());
 			$Pregunta = $_POST["Pregunta"];
 			$Respuesta = $_POST["Respuesta"];
 
-			$insert = "insert into Pregunta (User_Email,Pregunta,Respuesta) values ('$email', '$Pregunta', '$Respuesta')";
+			$insert = "insert into Preguntas (User_Email,Pregunta,Respuesta) values ('$email', '$Pregunta', '$Respuesta')";
 
 				if (!mysql_query($insert))
 			mysql_error();
