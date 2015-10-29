@@ -12,8 +12,10 @@ mysql_select_db("quiz") or die(mysql_error());
 
 	
 			$email = $_SESSION['UsuarioReg'];
+			$Tema = $_POST['Tema'];
 			$Pregunta = $_POST["Pregunta"];
 			$Respuesta = $_POST["Respuesta"];
+			$Complejidad = $_POST['Complejidad'];
 			$TipoAccion = "Insertar";
 			$IPConexion = $_SERVER['REMOTE_ADDR'];
 			
@@ -30,9 +32,34 @@ mysql_select_db("quiz") or die(mysql_error());
 						echo "Pregunta añadida correctamente";
 						echo "	
 							<br/>
-							<a href='layout.html'>Volver</a>";}
+							<a href='layout.html'>Volver</a>
+							<br/>";}
 					}
-				}
+	//Insercion XML
+	
+		if(file_exists("preguntas.xml")){
+			$PreguntasXML = simplexml_load_file("preguntas.xml");
+			
+			$AssessmentItem = $PreguntasXML->addChild('assessmentItem');
+			$AssessmentItem->addAttribute('complexity',$Complejidad);
+			$AssessmentItem->addAttribute('subject',$Tema);
+			
+			
+			$ItemBody = $AssessmentItem->addChild('itemBody');
+			$P = $ItemBody->addChild('p',$Pregunta);
+			
+			$CorrectReponse = $AssessmentItem->addChild('correctResponse');
+			$Value = $CorrectReponse->addChild('value',$Respuesta);
+			
+			$PreguntasXML->asXML('preguntas.xml');
+			
+			echo "PreguntaXML añadida correctamente";
+			echo "	
+				<br/>
+				<a href='VerPreguntasXML.php'>Ver Archivo XML</a>";}
+			
+		}
+				
 else
 	header('location:layout.html');
 ?>
