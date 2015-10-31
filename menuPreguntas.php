@@ -20,7 +20,7 @@ echo "
 </html>";
 	
 }
-else
+else{
 
 	$Usuario = $_SESSION['UsuarioReg'];
 	
@@ -32,11 +32,17 @@ echo "
 	</head>
 	<body>
 	
-		Usuario: ".$Usuario."
+		Usuario: ".$Usuario." 
+		
+		<a href='DestruirSesion.php'>LogOut</a>
 		
 		<br/>
 	
 		<h1>Menu Preguntas</h1>
+		
+		<br/>
+		
+		<a href='insertarPreguntaHtml.php'>Insertar nueva pregunta</a>
 		
 		<br/>
 		
@@ -48,6 +54,7 @@ echo "
 	</body>
 
 </html>";
+}
 
 	
 ?>

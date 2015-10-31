@@ -50,5 +50,6 @@
 				<input type="submit" value="Guardar"/>
 			</p>		
 		</form>
+		<a href="menuPreguntas.php">Volver</a>
 	</body>
 </html>

@@ -1,4 +1,4 @@
-<?php
+a<?php
 
 include "Funciones.php";
 
@@ -20,7 +20,7 @@ echo "
 	</tr>";
 	
 	
-while( $row = $usuarios->fetch_assoc() ) {
+while( $row = mysqli_fetch_assoc($usuarios) ) {
 	
 echo "
 

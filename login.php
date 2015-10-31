@@ -24,7 +24,7 @@ if($cont==1){
 		$mysqli-error;
 	else
 		$mysqli->close;
-		header('location:insertarPreguntaHtml.php');}
+		header('location:layout.html');}
 else
 	$mysqli->close();
 	echo "El usuario no existe";
