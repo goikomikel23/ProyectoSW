@@ -42,6 +42,9 @@ echo "
 		
 		<a href='transformar.php'>Ver Archivo PreguntasXML</a>	
 	
+		<br/>
+		
+		<a href='ObtenerDatos.html'>Obtener Datos de Usuarios</a>	
 	</body>
 
 </html>";

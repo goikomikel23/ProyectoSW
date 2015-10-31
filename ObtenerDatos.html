@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<script type="text/javascript">
+
+function completar(){
+	
+	var enc=false;
+	var xmlDoc = document.getElementById('Datos').contentDocument;
+	var email = document.getElementById('Email').value;
+	
+	var listaEmails = xmlDoc.getElementsByTagName('email');
+	var listaNombres = xmlDoc.getElementsByTagName('nombre');
+	var listaApellidos1 = xmlDoc.getElementsByTagName('apellido1');
+	var listaApellidos2 = xmlDoc.getElementsByTagName('apellido2');
+	var listaTelefonos = xmlDoc.getElementsByTagName('telefono');
+	
+	for (var i=0; i< listaEmails.length; i++){
+		if (email==listaEmails[i].childNodes[0].nodeValue){
+			
+			document.getElementById('Nombre').value=listaNombres[i].childNodes[0].nodeValue;
+			document.getElementById('Apellido1').value=listaApellidos1[i].childNodes[0].nodeValue;
+			document.getElementById('Apellido2').value=listaApellidos2[i].childNodes[0].nodeValue;
+			document.getElementById('Telefono').value=listaTelefonos[i].childNodes[0].nodeValue;
+			
+			enc = true;
+			break;
+		}
+	}
+		if (!enc)
+			alert("El usuario no ha sido encontrado");
+}
+
+</script>
+
+<html>
+	<head>
+		<title>Obtener datos</title>	
+		<meta charset="UTF-8">
+	</head>
+	<body>
+	
+		<h1>Obtener datos usuario</h1>
+		
+		<OBJECT id="Datos" data="usuarios.xml" type="text/xml" style="display:none">
+		</OBJECT>
+		
+		<form method="post" action="ObtenerDatos.html">
+		Email:<input type="text" name="Email" id="Email" required>
+			<br/>
+		Nombre<input type="text" name="Nombre" id="Nombre" required>
+			<br/>
+		Apellido1<input type="text" name="Apellido1" id="Apellido1" required>
+			<br/>
+		Apellido2<input type="text" name="Apellido2" id="Apellido2" required>
+			<br/>
+		Telefono:<input type="text" name="Telefono" id="Telefono" required>
+			<br/>
+		
+		<input type="button" value="Autocompletar" onclick="javascript:completar()">		
+			
+		</form>
+		<a href="layout.html">Volver</a>
+	</body>
+</html>
