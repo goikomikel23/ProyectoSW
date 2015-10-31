@@ -1,20 +1,18 @@
 <?php
-	
+include "Funciones.php";
+
 if(isset($_POST['Email'])){
 	
 session_start();
 	
-//mysql_connect("mysql.hostinger.es","u190124820_root","123456") or die(mysql_error());
-//mysql_select_db("u190124820_quiz") or die(mysql_error());
-	
-mysql_connect("localhost","root","") or die(mysql_error()); 
-mysql_select_db("quiz") or die(mysql_error()); 
+$mysqli = ConectarBD();
+
 
 $email=$_POST['Email']; 
 $pass=$_POST['Password'];
 
-$usuarios = mysql_query("select * from Usuario where Email='$email' and Password='$pass'");
-$cont= mysql_num_rows($usuarios);
+$usuarios = $mysqli->query("select * from Usuario where Email='$email' and Password='$pass'");
+$cont= $usuarios->num_rows;
 
 
 if($cont==1){
@@ -22,13 +20,13 @@ if($cont==1){
 	
 	$Conexion = "INSERT INTO Conexiones (`User_Email`) VALUES ('$email');";
 	
-	if (!mysql_query($Conexion))
-		mysql_error();
+	if (!$mysqli->query($Conexion))
+		$mysqli-error;
 	else
-		mysql_close();
+		$mysqli->close;
 		header('location:insertarPreguntaHtml.php');}
 else
-	mysql_close();
+	$mysqli->close();
 	echo "El usuario no existe";
 
 }

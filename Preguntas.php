@@ -1,11 +1,9 @@
 <?php
 session_start();
-mysql_connect();
-//mysql_connect("mysql.hostinger.es","u190124820_root","123456") or die(mysql_error());
-//mysql_select_db("u190124820_quiz") or die(mysql_error());
 
-mysql_connect("localhost","root","") or die(mysql_error());
-mysql_select_db("quiz") or die(mysql_error());
+include "Funciones.php";
+
+$mysqli = ConectarBD();
 
 	if($_SESSION)
 		$email = $_SESSION['UsuarioReg'];
@@ -16,14 +14,14 @@ mysql_select_db("quiz") or die(mysql_error());
 	$IPConexion = $_SERVER['REMOTE_ADDR'];
 
 	$Accion = "insert into Acciones (User_Email, Tipo_Accion, IP_Conexion) values ('$email', '$TipoAccion', '$IPConexion')";
-	if (!mysql_query($Accion))
-			mysql_error();
+	if (!$mysqli->query($Accion))
+			$mysqli->error;
 
 if (!$_SESSION){
 
 	echo "Usuario Anónimo <br/>";
 
-	$Preguntas = mysql_query( "select Pregunta, Complejidad from Preguntas" );
+	$Preguntas = $mysqli->query( "select Pregunta, Complejidad from Preguntas" );
 
 
 	echo "
@@ -34,8 +32,9 @@ if (!$_SESSION){
 			<th> Complejidad </th>
 		</tr>";
 	
+	//while( $row = mysql_fetch_array( $Preguntas, MYSQL_ASSOC) ) { SI VA BIEN BORRAR
 	
-	while( $row = mysql_fetch_array( $Preguntas, MYSQL_ASSOC) ) {
+	while( $row = $Preguntas->fetch_assoc() ) {
 	
 		echo "
 
@@ -58,6 +57,6 @@ else
 
 
 
-mysql_close();
+$mysqli->close();
 
 ?>

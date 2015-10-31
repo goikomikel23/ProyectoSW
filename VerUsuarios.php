@@ -1,11 +1,8 @@
 <?php
 
-mysql_connect();
-//mysql_connect("mysql.hostinger.es","u190124820_root","123456") or die(mysql_error());
-//mysql_select_db("u190124820_quiz") or die(mysql_error());
+include "Funciones.php";
 
-mysql_connect("localhost","root","") or die(mysql_error());
-mysql_select_db("quiz") or die(mysql_error());
+$mysqli = ConectarBD();
 
 $usuarios = mysql_query( "select * from Usuario" );
 
@@ -23,7 +20,7 @@ echo "
 	</tr>";
 	
 	
-while( $row = mysql_fetch_array( $usuarios, MYSQL_ASSOC) ) {
+while( $row = $usuarios->fetch_assoc() ) {
 	
 echo "
 

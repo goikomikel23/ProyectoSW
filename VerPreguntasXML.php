@@ -24,6 +24,9 @@ foreach ($PeliculasXML->xpath('//assessmentItem') as $Pelicula)
 echo "
 	</table>
 ";
+	
+	
+echo "<a href=layout.html>Volver<a/>";
 }
 else
 	echo "No existe el archivo preguntas.xml";

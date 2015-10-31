@@ -1,15 +1,11 @@
 <?php
+include "Funciones.php";
 
 session_start();
 
 if($_SESSION){
 	
-//mysql_connect("mysql.hostinger.es","u190124820_root","123456") or die(mysql_error());
-//mysql_select_db("u190124820_quiz") or die(mysql_error());
-	
-mysql_connect("localhost","root","") or die(mysql_error()); 
-mysql_select_db("quiz") or die(mysql_error());
-
+$mysqli = ConectarBD();
 	
 			$email = $_SESSION['UsuarioReg'];
 			$Tema = $_POST['Tema'];
@@ -21,20 +17,21 @@ mysql_select_db("quiz") or die(mysql_error());
 			
 			$Accion = "insert into Acciones (User_Email, Tipo_Accion, IP_Conexion) values ('$email', '$TipoAccion', '$IPConexion')";
 
-			$insert = "insert into Preguntas (User_Email,Pregunta,Respuesta) values ('$email', '$Pregunta', '$Respuesta')";
+			$insert = "insert into Preguntas (User_Email,Pregunta,Respuesta,Complejidad) values ('$email', '$Pregunta', '$Respuesta', '$Complejidad')";
 
-				if (!mysql_query($insert))
-					mysql_error();
+				if (!$mysqli->query($insert))
+					$mysqli->error;
 				else{
-					if (!mysql_query($Accion))
-						mysql_error();
+					if (!$mysqli->query($Accion))
+						$mysqli->error;
 					else{
-						echo "Pregunta añadida correctamente";
+						echo "Pregunta a&ntilde;adida correctamente";
 						echo "	
 							<br/>
 							<a href='layout.html'>Volver</a>
 							<br/>";}
 					}
+		$mysqli->close();
 	//Insercion XML
 	
 		if(file_exists("preguntas.xml")){
@@ -53,7 +50,7 @@ mysql_select_db("quiz") or die(mysql_error());
 			
 			$PreguntasXML->asXML('preguntas.xml');
 			
-			echo "PreguntaXML añadida correctamente";
+			echo "PreguntaXML a&ntilde;adida correctamente";
 			echo "	
 				<br/>
 				<a href='VerPreguntasXML.php'>Ver Archivo XML</a>";}
