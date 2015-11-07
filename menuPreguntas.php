@@ -51,6 +51,10 @@ echo "
 		<br/>
 		
 		<a href='ObtenerDatos.html'>Obtener Datos de Usuarios</a>	
+		
+		<br/>
+		
+		<a href='GestionarPreguntas.php'>Gestionar tus preguntas</a>	
 	</body>
 
 </html>";
