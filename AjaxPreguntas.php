@@ -8,7 +8,6 @@ echo "
 	<th>Tema</th>
 	<th>Pregunta</th>
 	<th>Complejidad</th>
-	<th>Actualizacion</th>
 
 ";
 
@@ -20,7 +19,6 @@ foreach ($PeliculasXML->xpath('//assessmentItem') as $Pelicula)
 				<td>".$Pelicula['subject']."</td>
 				<td>".$Pelicula->itemBody->p."</td>
 				<td>".$Pelicula['complexity']."</td>
-				<td><button>Editar</button></td>
 			</tr>";
 	}
 echo "

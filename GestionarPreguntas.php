@@ -12,6 +12,7 @@
 		
 			p = new XMLHttpRequest();
 			i = new XMLHttpRequest();
+			s = new XMLHttpRequest();
 			
 			p.onreadystatechange = function(){
 				if(p.readyState==4){
@@ -24,10 +25,16 @@
 					document.getElementById("InsertarMisPreguntas").innerHTML=i.responseText;	
 				}
 			};
+				
+			s.onreadystatechange = function(){
+				if(s.readyState==4){
+					document.getElementById("ActualizarMisPreguntas").innerHTML=s.responseText;	
+				}
+			};
 			
 			function AjaxPreguntas(){
 				
-				p.open("GET","AjaxPreguntas.php",true);
+				p.open("POST","AjaxPreguntas.php",true);
 				p.send();
 				
 			}
@@ -36,6 +43,13 @@
 			
 				i.open("POST","insertarPreguntaHtml.php",true);
 				i.send();
+				
+			}
+				
+			function AjaxActualizarPreguntas(){
+			
+				s.open("POST","AjaxActualizarPreguntas.php",true);
+				s.send();
 				
 			}
 	
@@ -53,13 +67,30 @@
 		<br/>
 		<br/>
 		
+		<div id="MisPreguntas"></div>
+		
+		<br/>
+		<br/>		
+		
 		<button onclick="AjaxInsertarPreguntas()">Insertar Pregunta</button>
 		
 		<br/>
 		<br/>
 		
-		<div id="MisPreguntas"></div>
 		<div id="InsertarMisPreguntas"></div>
+		
+		<br/>
+		<br/>
+		
+		<button onclick="AjaxActualizarPreguntas()">Actualizar Preguntas</button>
+		
+		<br/>
+		<br/>
+		
+		<div id="ActualizarMisPreguntas"></div>
+		
+		<br/>
+		<br/>
 		
 		<br/>
 		<br/>
