@@ -31,7 +31,7 @@ echo "
 		<td>" . $row['Respuesta'] ."</td>
 		<td>" . $row['Complejidad'] ."</td>
 		<td>
-			<button 			onClick='ActualizacionPregunta(".$row['Numero_Pregunta'],$row['Pregunta'],$row['Respuesta'],$row['Complejidad'].")'>Editar</button></td>
+			<button onClick='ActualizacionPregunta()'>Editar</button></td>
 	</tr>"; 
 	
 	}
@@ -42,17 +42,21 @@ echo "</table>";
 	<head>
 		<script lang="javascript">
 		
-			x = new XMLHttpRequest();
+			/*x = new XMLHttpRequest();
 			
 			x.onreadystatechange = function(){
 				if(x.readyState==4){
-					document.getElementById("FormularioActualziacion").innerHTML=x.responseText;	
+					document.getElementById("FormularioActualiziacion").innerHTML=x.responseText;	
 				}
-			};
+			};*/
 			
-			function ActualizacionPregunta(NP,P,R,C){
+			function ActualizacionPregunta(){
 				
-				<?php
+				alert("Lo siento, la implementación editar no esta disponible");
+				
+				/*".$row['Numero_Pregunta'],$row['Pregunta'],$row['Respuesta'],$row['Complejidad']."*/
+				
+				/*<?php
 				session_start();
 					$_SESSION['NP'] = NP;
 					$_SESSION['P'] = P;
@@ -62,7 +66,7 @@ echo "</table>";
 				?>
 				
 				x.open("POST","FormularioActualizacion.php",true);
-				x.send();
+				x.send();*/
 				
 			}
 			

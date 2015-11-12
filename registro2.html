@@ -4,8 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Registro</title>
+    <script lang="javascript">
+	    
+	     p = new XMLHttpRequest();
+	   
+	   p.onreadystatechange = function(){
+				if(p.readyState==4){
+					document.getElementById("Matriculado").innerHTML=p.responseText;	
+				}
+			};
+			
+		function ComprobarEmail(email){
+						
+				p.open("GET","ComprobarEmail.php?q="+email,true);
+				p.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				p.send();
+				
+		}	  
+	    
+    </script>
+    
+       
     <script src="scripts/jquery-2.1.4.js"></script>
-    <script>
+    <script>			
+	    /*
         $(document).ready(function () {
 
             console.log("ready!");
@@ -34,8 +56,8 @@
 
         function del() {
             $("#espo").remove();
-        }
-    </script>
+        }*/
+    </script> 
 
 </head>
 
@@ -49,13 +71,17 @@
                 <input type="text" name="apellidos" id="apellidos" placeholder="Apellido1 Apellido2" pattern="[A-z]+ [A-z]+" required>
             </p>
             <p>E-mail*:
-                <input type="email" name="email" id="email" placeholder="email@ikasle.ehu.es/eus" pattern="[a-z]+[0-9][0-9][0-9]@ikasle\.ehu\.(es||eus)" required>
+                <input type="email" name="email" id="email" placeholder="email@ikasle.ehu.es/eus" pattern="[a-z]+[0-9][0-9][0-9]@ikasle\.ehu\.(es||eus)" onblur="ComprobarEmail(this.value)" required>
+            <p>
+	            <div id="Matriculado"></div>
+            </p>
 
                 </li>
             </p>
             <p>Password*:
                 <input type="password" name="password" id="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
             </p>
+            
             <p>Tel&eacute;fono*:
                 <input type="text" name="telefono" id="telefono" placeholder="Telefono" pattern="^\d{9}$" required>
             </p>

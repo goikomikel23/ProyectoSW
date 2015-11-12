@@ -49,7 +49,7 @@ else
                 </li>
             </p>
 	<p>Password*:
-                <input type="password" name="Password" id="Password" placeholder="Password" value="123456Maik" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                <input type="password" name="Password" id="Password" value="123456Maik" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
     </p>
 	<p>
             	<input type="submit" id="Enviar" value="Enviar" ;>

@@ -4,7 +4,7 @@ include "Funciones.php";
 
 $mysqli = ConectarBD();
 
-$usuarios = mysql_query( "select * from Usuario" );
+$usuarios = $mysqli->query("select * from Usuario" );
 
 
 echo "
@@ -20,7 +20,7 @@ echo "
 	</tr>";
 	
 	
-while( $row = mysqli_fetch_assoc($usuarios) ) {
+while( $row = $usuarios->fetch_assoc() ) {
 	
 echo "
 
@@ -44,6 +44,6 @@ echo "</table>";
 
 echo "<p> <a href='layout.html'> Inicio </a>";
 
-mysql_close();
+$mysqli->close();
 
 ?>
