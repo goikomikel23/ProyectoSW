@@ -1,21 +1,16 @@
 <?php
 	
-//CREAMOS EL WSDL
-
+//CREAMOS EL SOAP
 require_once('lib/nusoap.php');
 require_once('lib/class.wsdlcache.php');
-
-$ns="http://localhost/ProyectoSW/lib/samples/";
+$ns="lib/samples/";
 $server = new soap_server;
 $server->configureWSDL('ComprobarPass',$ns);
 $server->wsdl->schemaTargetNamespace=$ns;
-
-
 $server->register('ComprobarPass', array('Pass'=>'xsd:string'),array('response'=>'xsd:string'), $ns);
-
 function ComprobarPass ($Pass){
 	
-	$file = file('http://localhost/ProyectoSW/otros/toppasswords.txt',FILE_IGNORE_NEW_LINES);
+	$file = file('otros/toppasswords.txt',FILE_IGNORE_NEW_LINES);
 	
 	$boo = "Valida";
 	
@@ -27,9 +22,7 @@ function ComprobarPass ($Pass){
 	return $boo;
 	
 }
-
 $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA:''; 
 $server->service($HTTP_RAW_POST_DATA);
-
 	
 ?>
