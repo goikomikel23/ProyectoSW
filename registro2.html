@@ -7,6 +7,7 @@
     <script lang="javascript">
 	    
 	     p = new XMLHttpRequest();
+	     q = new XMLHttpRequest();
 	   
 	   p.onreadystatechange = function(){
 				if(p.readyState==4){
@@ -14,13 +15,24 @@
 				}
 			};
 			
+		q.onreadystatechange = function(){
+				if(q.readyState==4){
+					document.getElementById("PassSegura").innerHTML=q.responseText;	
+				}
+			};
+			
 		function ComprobarEmail(email){
 						
 				p.open("GET","ComprobarEmail.php?q="+email,true);
-				p.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 				p.send();
-				
-		}	  
+		}
+		
+		function ComprobarPass(Pass){
+			
+						
+				q.open("GET","ComprobarContraseña.php?q="+Pass,true);
+				q.send();
+		}
 	    
     </script>
     
@@ -79,7 +91,11 @@
                 </li>
             </p>
             <p>Password*:
-                <input type="password" name="password" id="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                <input type="password" name="password" id="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onblur="ComprobarPass(this.value)" required>
+            </p>
+            
+            <p>
+	            <div id="PassSegura"></div>
             </p>
             
             <p>Tel&eacute;fono*:
