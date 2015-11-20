@@ -1,6 +1,14 @@
 <?php
 			session_start();
 			echo $_SESSION['UsuarioAlumno'];
+if(!$_SESSION['UsuarioAlumno']){
+	
+	echo "<script language='javascript'>alert('Area Restringida');</script>";
+	
+	header('location:layout.html');
+	
+}
+			
 ?>
 
 <!DOCTYPE html>

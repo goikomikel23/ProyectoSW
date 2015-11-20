@@ -3,6 +3,7 @@ include "Funciones.php";
 session_start();
 
 $nPregunta = $_GET['nPregunta'];
+$_SESSION['nPregunta'] = $nPregunta;
 
 $mysqli = ConectarBD();
 
@@ -13,8 +14,6 @@ $row = $Pregunta->fetch_assoc();
 $Enun = $row['Pregunta'];
 $Respuesta = $row['Respuesta'];
 $Complejidad = $row['Complejidad'];
-
-
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +24,7 @@ $Complejidad = $row['Complejidad'];
 	</head>
 	<body>
 		
-		<form id="InsertarPregunta" name="InsertarPregunta" action="insertarPregunta.php" method="POST">
+		<form id="ActualizarPregunta" name="ActualizarPregunta" action="ActualizarPregunta.php" method="POST">
 			
 			<p>
 				Pregunta:
@@ -59,7 +58,7 @@ $Complejidad = $row['Complejidad'];
 			</p>
 
 			<p>
-				<input type="submit" value="Guardar"/>
+				<input type="submit" value="Actualizar"/>
 			</p>		
 		</form>
 		<a href="menuPreguntas.php">Volver</a>

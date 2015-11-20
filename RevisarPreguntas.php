@@ -3,6 +3,10 @@
 include "Funciones.php";
 
 session_start();
+
+if(isset($_SESSION['UsuarioProfesor'])){
+	
+
 echo $_SESSION['UsuarioProfesor'];
 
 
@@ -40,6 +44,10 @@ echo "
 	
 	}
 echo "</table>";
+}
+else{
+	echo "Area Restringida";
+}
 ?>
 
 <html>

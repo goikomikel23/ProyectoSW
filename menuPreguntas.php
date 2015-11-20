@@ -93,10 +93,6 @@ echo "
 		
 		<br/>
 		
-		<a href='GestionarPreguntas.php'>Gestionar tus preguntas</a>
-		
-		<br/>
-		
 		<a href='RevisarPreguntas.php'>Revisar Preguntas</a>
 
 	</body>
