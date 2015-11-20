@@ -33,6 +33,19 @@
 				q.open("GET","ComprobarContraseña.php?q="+Pass,true);
 				q.send();
 		}
+		
+		function ComprobarPassCli (){
+			
+			var x = document.getElementById("password").value;
+			var y = document.getElementById("Cpassword").value;
+			
+			if (x!=y){
+				document.getElementById("password").value = "";
+				document.getElementById("Cpassword").value = "";
+				
+				alert("Debes introducir la misma contraseña");
+			}
+		}
 	    
     </script>
     
@@ -77,13 +90,13 @@
     <div id="contenedor">
         <form id='registro' name='registro' method="POST" action="Registrar.php">
             <p>Nombre*:
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+                <input type="text" name="nombre" id="nombre" value="pepito" placeholder="Nombre" required>
             </p>
             <p>Apellidos*:
-                <input type="text" name="apellidos" id="apellidos" placeholder="Apellido1 Apellido2" pattern="[A-z]+ [A-z]+" required>
+                <input type="text" name="apellidos" id="apellidos" value="pepito pepito" placeholder="Apellido1 Apellido2" pattern="[A-z]+ [A-z]+" required>
             </p>
             <p>E-mail*:
-                <input type="email" name="email" id="email" placeholder="email@ikasle.ehu.es/eus" pattern="[a-z]+[0-9][0-9][0-9]@ikasle\.ehu\.(es||eus)" onblur="ComprobarEmail(this.value)" required>
+                <input type="email" name="email" id="email" value="ehu.eus" placeholder="email@ikasle.ehu.es/eus" onblur="ComprobarEmail(this.value)" required>
             <p>
 	            <div id="Matriculado"></div>
             </p>
@@ -91,15 +104,24 @@
                 </li>
             </p>
             <p>Password*:
-                <input type="password" name="password" id="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onblur="ComprobarPass(this.value)" required>
+                <input type="password" name="password" id="password" value="123456Maik" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onblur="ComprobarPass(this.value)" required>
             </p>
             
             <p>
 	            <div id="PassSegura"></div>
             </p>
             
+            <p>ComprobarPassword*:
+                <input type="password" name="Cpassword" id="Cpassword" value="123456Maik" placeholder="Repite el Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onblur="ComprobarPassCli(this.value)" required>
+            </p>
+
+            
+            <p>
+	            <div id="PassSegura"></div>
+            </p>
+            
             <p>Tel&eacute;fono*:
-                <input type="text" name="telefono" id="telefono" placeholder="Telefono" pattern="^\d{9}$" required>
+                <input type="text" name="telefono" id="telefono" value="666654654" placeholder="Telefono" pattern="^\d{9}$" required>
             </p>
             <p id="esp">Especialidad*:</br>
                 <input type="radio" name="especialidad" id="IC" onclick="del()" value="Ingenieria de computadores" checked>Ingenier&iacute;a de computadores</br>

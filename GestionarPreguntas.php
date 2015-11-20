@@ -1,6 +1,6 @@
 <?php
 			session_start();
-			echo $_SESSION['UsuarioReg'];
+			echo $_SESSION['UsuarioAlumno'];
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,6 @@
 		
 			p = new XMLHttpRequest();
 			i = new XMLHttpRequest();
-			s = new XMLHttpRequest();
 			
 			p.onreadystatechange = function(){
 				if(p.readyState==4){
@@ -26,11 +25,6 @@
 				}
 			};
 				
-			s.onreadystatechange = function(){
-				if(s.readyState==4){
-					document.getElementById("ActualizarMisPreguntas").innerHTML=s.responseText;	
-				}
-			};
 			
 			function AjaxPreguntas(){
 				
@@ -43,13 +37,6 @@
 			
 				i.open("POST","insertarPreguntaHtml.php",true);
 				i.send();
-				
-			}
-				
-			function AjaxActualizarPreguntas(){
-			
-				s.open("POST","AjaxActualizarPreguntas.php",true);
-				s.send();
 				
 			}
 	
@@ -78,16 +65,6 @@
 		<br/>
 		
 		<div id="InsertarMisPreguntas"></div>
-		
-		<br/>
-		<br/>
-		
-		<button onclick="AjaxActualizarPreguntas()">Actualizar Preguntas</button>
-		
-		<br/>
-		<br/>
-		
-		<div id="ActualizarMisPreguntas"></div>
 		
 		<br/>
 		<br/>

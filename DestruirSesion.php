@@ -1,5 +1,10 @@
 <?php
 session_start();
-$_SESSION = array();
+
+session_destroy();
+
 header('location:layout.html');
+
+
+//unset($_SESSION['nombre']); para eliminar la variable de sesion
 ?>
