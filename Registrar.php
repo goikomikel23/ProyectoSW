@@ -21,28 +21,24 @@ if (
    
    $email = $_POST['email'];
    
-   preg_match($patronAlumno, $email, $coincidenciaAlumno);
+   /*preg_match($patronAlumno, $email, $coincidenciaAlumno);
    preg_match($patronProfe, $email, $coincidenciaProfe);
    
-   echo $coincidenciaAlumno;
+   echo $coincidenciaAlumno;*/
    
-   /*if ($coincidenciaAlumno[0]==$email)
-   		$rol = "Alumno";
-   	else if ($coincidenciaProfe[0]==$email)
-   		$rol = "Profesor";
-   	else
-   		echo "Ha habido un error en el rol";*/
+   $pass = $_POST['password'];
+   $sha1 = sha1($pass);
    		
 
 $SQL1= "insert into Usuario (Nombre, Apellidos, Email, Password, Telefono, Especialidad, Intereses, Rol) values (
 '$_POST[nombre]',
 '$_POST[apellidos]',
 '$_POST[email]',
-'$_POST[password]',
+'$sha1',
 '$_POST[telefono]',
 '$_POST[especialidad]',
 '$_POST[intereses]',
- '$rol')";
+ '$_POST[Rol]')";
 
 if (!$mysqli->query($SQL1))
 {

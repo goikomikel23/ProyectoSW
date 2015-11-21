@@ -17,6 +17,7 @@ echo "
 		<th> Teléfono </th>
 		<th> Especialidad </th>
 		<th> Intereses </th>
+		<th> Rol </th>
 	</tr>";
 	
 	
@@ -31,6 +32,8 @@ echo "
 		<td>" . $row['Telefono'] ."</td>
 		<td>" . $row['Especialidad'] ."</td>
 		<td>" . $row['Intereses'] ."</td>
+		<td>" . $row['Rol'] ."</td>
+		
 	</tr>"; 
 	
 	}

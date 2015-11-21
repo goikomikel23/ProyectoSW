@@ -10,8 +10,9 @@ $mysqli = ConectarBD();
 
 $email=$_POST['Email']; 
 $pass=$_POST['Password'];
+$sha1=sha1($pass);
 
-$usuario = $mysqli->query("select rol from Usuario where Email='$email' and Password='$pass'")->fetch_object()->rol;
+$usuario = $mysqli->query("select rol from Usuario where Email='$email' and Password='$sha1'")->fetch_object()->rol;
 
 if($usuario=='Profesor'){
 	$_SESSION['UsuarioProfesor'] = $email;
