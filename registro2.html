@@ -113,13 +113,16 @@
             
             <p>ComprobarPassword*:
                 <input type="password" name="Cpassword" id="Cpassword" value="123456Maik" placeholder="Repite el Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onblur="ComprobarPassCli(this.value)" required>
-            </p>
-
-            
+            </p>            
             <p>
 	            <div id="PassSegura"></div>
             </p>
-            
+            <p>Pregunta Secreta:</br>
+                <textarea rows="2" cols="50" name="PSecreta" placeholder="Introduce tu pregunta secreta" id="PSecreta"></textarea>
+            </p>
+            <p>Respuesta Secreta:</br>
+                <textarea rows="2" cols="50" name="RSecreta" placeholder="Introduce tu respuesta secreta" id="RSecreta"></textarea>
+            </p>
             <p>Tel&eacute;fono*:
                 <input type="text" name="telefono" id="telefono" value="666654654" placeholder="Telefono" pattern="^\d{9}$" required>
             </p>

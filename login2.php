@@ -63,7 +63,7 @@ if($usuario=='Profesor'){
                 </li>
             </p>
 	<p>Password*:
-                <input type="password" name="Password" id="Password" value="web000" placeholder="Password"  required>
+                <input type="password" name="Password" id="Password" placeholder="Password"  required>
                 
                 <!- pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" ->
     </p>
@@ -80,12 +80,15 @@ if($usuario=='Profesor'){
                 </li>
             </p>
 	<p>Password*:
-                <input type="password" name="Password" id="Password" value="123456Maik" placeholder="Password"  required>
+                <input type="password" name="Password" id="Password" placeholder="Password"  required>
                 
                 <!- pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" ->
     </p>
 	<p>
             	<input type="submit" id="Enviar" value="Enviar" ;>
+    </p>
+    <p>
+	    <a href="cambiarContrasenia.php">¿Has olvidado tu contraseña?</a>
     </p>
 </form>
 </body>

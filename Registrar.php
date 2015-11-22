@@ -30,11 +30,13 @@ if (
    $sha1 = sha1($pass);
    		
 
-$SQL1= "insert into Usuario (Nombre, Apellidos, Email, Password, Telefono, Especialidad, Intereses, Rol) values (
+$SQL1= "insert into Usuario (Nombre, Apellidos, Email, Password, Pregunta_Secreta, Respuesta_Secreta,Telefono, Especialidad, Intereses, Rol) values (
 '$_POST[nombre]',
 '$_POST[apellidos]',
 '$_POST[email]',
 '$sha1',
+'$_POST[PSecreta]',
+'$_POST[RSecreta]',
 '$_POST[telefono]',
 '$_POST[especialidad]',
 '$_POST[intereses]',
