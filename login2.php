@@ -88,7 +88,7 @@ if($usuario=='Profesor'){
             	<input type="submit" id="Enviar" value="Enviar" ;>
     </p>
     <p>
-	    <a href="cambiarContrasenia.php">¿Has olvidado tu contraseña?</a>
+	    <a href="cambiarContrasenia.php">¿Has olvidado tu contrasenia?</a>
     </p>
 </form>
 </body>
