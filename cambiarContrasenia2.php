@@ -2,20 +2,18 @@
 include "Funciones.php";
 session_start();
 
+<<<<<<< HEAD
 $emailS = $_SESSION['cambioEmail'];
 
+=======
+>>>>>>> origin/master
 if (isset($_GET['email'])){
 
-	$email = $_GET['email'];
-	
+	$email = $_GET['email'];	
 
 	$mysqli = ConectarBD();
-	$pregunta = $mysqli->query("select Pregunta_Secreta from Usuario where Email='$emailS'")->fetch_object()->Pregunta_Secreta;
-	
-	//NOSE POR QUÉ SI LE METO LA VARIABLE $EMAIL NO ME FUNCIONA CON GET, HE USADO SESSION PARA SALIR DEL PASO
-
-	echo $pregunta;
-	
+	$pregunta = $mysqli->query("select Pregunta_Secreta from Usuario where Email='$email'")->fetch_object()->Pregunta_Secreta;
+		
 }else if(isset($_POST['RSecreta'])){
 	
 		$mysqli = ConectarBD();
