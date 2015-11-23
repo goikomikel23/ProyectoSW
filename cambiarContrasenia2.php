@@ -1,9 +1,8 @@
 <?php
-include "funciones.php";
+include "Funciones.php";
 session_start();
 
 $emailS = $_SESSION['cambioEmail'];
-echo $emailS;
 
 if (isset($_GET['email'])){
 

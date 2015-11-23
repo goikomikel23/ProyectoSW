@@ -1,5 +1,5 @@
 <?php
-include "funciones.php";
+include "Funciones.php";
 session_start();
 
 if (isset($_POST['email'])){
@@ -13,7 +13,7 @@ if (isset($_POST['email'])){
 	
 	if ($count==1){
 		$_SESSION['cambioEmail'] = $email;
-		header("location: cambiarContrasenia2.php?email='$email'");
+		header("location:cambiarContrasenia2.php?email='$email'");
 	} else {
 	echo "El usuario introducido no existe";
 	}	
@@ -30,7 +30,7 @@ if (isset($_POST['email'])){
 			
 			<p>
 			Introduce tu email:<br/>
-			<input type="text" name="email" value="contraolvidada002@ikasle.ehu.eus"/>
+			<input type="text" name="email"/>
 			</p>
 			<p>
 			<input type="submit" value="Enviar"/>
