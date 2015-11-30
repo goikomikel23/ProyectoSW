@@ -1,7 +1,7 @@
 <?php
 			session_start();
-			echo $_SESSION['UsuarioAlumno'];
-if(!$_SESSION['UsuarioAlumno']){
+			echo $_SESSION['Rol'];
+if($_SESSION['Rol']!='Alumno'){
 	
 	echo "<script language='javascript'>alert('Area Restringida');</script>";
 	

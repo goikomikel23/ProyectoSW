@@ -20,9 +20,10 @@ echo "
 </html>";
 	
 }
-else if (isset($_SESSION['UsuarioAlumno'])){
+else if (($_SESSION['Rol'])=='Alumno'){
 
-	$Usuario = $_SESSION['UsuarioAlumno'];
+	$Usuario = $_SESSION['UsuarioReg'];
+	
 	
 echo "
 
@@ -33,6 +34,7 @@ echo "
 	<body>
 	
 		Usuario: ".$Usuario." 
+		
 		
 		<a href='DestruirSesion.php'>LogOut</a>
 		
@@ -59,9 +61,10 @@ echo "
 
 </html>";
 }
-else if (isset($_SESSION['UsuarioProfesor'])){
+else if (($_SESSION['Rol'])=='Profesor'){
 	
-	$Usuario = $_SESSION['UsuarioProfesor'];
+	$Usuario = $_SESSION['UsuarioReg'];
+	
 	
 echo "
 
@@ -71,7 +74,7 @@ echo "
 	</head>
 	<body>
 	
-		Usuario: ".$Usuario." 
+		Usuario: ".$Usuario."
 		
 		<a href='DestruirSesion.php'>LogOut</a>
 		

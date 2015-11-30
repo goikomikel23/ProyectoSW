@@ -4,10 +4,10 @@ include "Funciones.php";
 
 session_start();
 
-if(isset($_SESSION['UsuarioProfesor'])){
+if(($_SESSION['Rol'])=='Profesor'){
 	
 
-echo $_SESSION['UsuarioProfesor'];
+echo $_SESSION['UsuarioReg'];
 
 
 $mysqli = ConectarBD();

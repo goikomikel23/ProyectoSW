@@ -1,10 +1,6 @@
 <?php
-<<<<<<< HEAD
+
 include "Funciones.php";
-session_start();
-=======
-include "funciones.php";
->>>>>>> origin/master
 
 if (isset($_POST['email'])){
 	
@@ -16,12 +12,8 @@ if (isset($_POST['email'])){
 	$count = $tupla->num_rows;
 	
 	if ($count==1){
-<<<<<<< HEAD
-		$_SESSION['cambioEmail'] = $email;
-		header("location:cambiarContrasenia2.php?email='$email'");
-=======
-		header("location: cambiarContrasenia2.php?email=$email");
->>>>>>> origin/master
+		header("location:cambiarContrasenia2.php?email=$email");
+
 	} else {
 	echo "El usuario introducido no existe";
 	}	

@@ -28,6 +28,12 @@ if (
    
    $pass = $_POST['password'];
    $sha1 = sha1($pass);
+   
+   /************IMAGE***************/
+  
+  
+
+   /************IMAGE***************/
    		
 
 $SQL1= "insert into Usuario (Nombre, Apellidos, Email, Password, Pregunta_Secreta, Respuesta_Secreta,Telefono, Especialidad, Intereses, Rol) values (

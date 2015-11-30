@@ -1,6 +1,10 @@
 <?php
 			session_start();
+			if(isset($_SESSION['Rol'])==false){
+				header('location: necesitaAutenticacion.php');
+			}
 			echo "Bienvenido ".$_SESSION['UsuarioReg']." inserta tu pregunta:";
+			
 ?>
 
 <!DOCTYPE html>

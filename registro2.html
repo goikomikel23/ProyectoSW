@@ -52,16 +52,13 @@
        
     <script src="scripts/jquery-2.1.4.js"></script>
     <script>			
-	    /*
+	    
         $(document).ready(function () {
 
             console.log("ready!");
             $("#Otra").click(function () {
-                if ($("#espo").length <= 0) {
-                    $("#otras").append("<input type='text' name='especialidad' id='espo' placeholder='Otra especialidad' required>");
-                }
+                $("#otras").append("<input type='text' name='espo' id='espo' placeholder='Otra especialidad' required>");
             })
-
 
             function mostrarImagen(input) {
                 if (input.files && input.files[0]) {
@@ -81,14 +78,14 @@
 
         function del() {
             $("#espo").remove();
-        }*/
+        }
     </script> 
 
 </head>
 
 <body>
     <div id="contenedor">
-        <form id='registro' name='registro' method="POST" action="Registrar.php">
+        <form id='registro' name='registro' method="POST" action="Registrar.php" enctype="multipart/form-data">
             <p>Nombre*:
                 <input type="text" name="nombre" id="nombre" value="pepito" placeholder="Nombre" required>
             </p>
@@ -142,7 +139,8 @@
 
             </p>
             <p>Foto de perfil:
-                <input type="File" name="imagen" id="imagen" accept="image/*">
+
+				 <input type="file" name="file" id="file"><br>
             </p>
 
             <div id="img_destino"></div>
