@@ -1,6 +1,9 @@
 <?php
 
 include "Funciones.php";
+session_start();
+
+if($_SESSION['Rol']=='Profesor'){
 
 $mysqli = ConectarBD();
 
@@ -18,6 +21,8 @@ echo "
 		<th> Especialidad </th>
 		<th> Intereses </th>
 		<th> Rol </th>
+		<th> R. Correctas </th>
+		<th> R. Incorrectas </th>
 	</tr>";
 	
 	
@@ -33,11 +38,18 @@ echo "
 		<td>" . $row['Especialidad'] ."</td>
 		<td>" . $row['Intereses'] ."</td>
 		<td>" . $row['Rol'] ."</td>
+		<td>" . $row['RCorrectas'] ."</td>
+		<td>" . $row['RIncorrectas'] ."</td>
 		
 	</tr>"; 
 	
 	}
-echo "</table>"; 
+echo "</table>";
+}else{
+	echo "Area Restringida";
+	echo "<br/><br/>";
+	
+}
 
 
 

@@ -56,7 +56,7 @@ echo "1 tupla añadida";
 
 $mysqli->close();
 	
-echo "<p> <a href='VerUsuarios.php'> Ver registros </a>";
+echo "<p> <a href='Layout.html'> Volver </a>";
 	
 } else {
 	echo "Los datos introducidos no son correctos";

@@ -19,6 +19,7 @@ if(!$mysqli->query($sentencia)){
 			die('Error: '.$mysqli->error);
 	
 		}else{
+			unset($_SESSION['cambioEmail']);
 			echo("La Contraseña ha sido actualizada. 
 			
 					<br/>

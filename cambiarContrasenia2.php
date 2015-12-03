@@ -1,9 +1,11 @@
 <?php
 include "Funciones.php";
+session_start();
 
 if (isset($_GET['email'])){
 
 	$email = $_GET['email'];
+	$_SESSION['cambioEmail'] = $email;
 	
 	$mysqli = ConectarBD();
 	$pregunta = $mysqli->query("select Pregunta_Secreta from Usuario where Email='$email'")->fetch_object()->Pregunta_Secreta;
@@ -13,6 +15,7 @@ if (isset($_GET['email'])){
 	echo $pregunta;
 		
 }else if(isset($_POST['RSecreta'])){
+		$emailS = 	$_SESSION['cambioEmail'];
 	
 		$mysqli = ConectarBD();
 		

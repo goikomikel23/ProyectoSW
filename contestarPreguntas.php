@@ -4,7 +4,7 @@ include "Funciones.php";
 
 session_start();
 
-if(($_SESSION['Rol'])=='Profesor'||'Administrador'){
+if($_SESSION['Rol']){
 	
 
 echo $_SESSION['UsuarioReg'];
@@ -19,12 +19,9 @@ echo "
 
 <table border=1> 
 	<tr> 
-		<th> N. Pregunta </th> 
 		<th> Pregunta </th>
-		<th> Respuesta </th>
 		<th> Complejidad </th>
-		<th> Usuario </th>
-		<th> Actualizar </th>
+		<th> Elegir </th>
 	</tr>";
 	
 	
@@ -33,13 +30,10 @@ while( $row = $Preguntas->fetch_assoc() ) {
 echo "
 
 	<tr>
-		<td>" . $row['Numero_Pregunta'] ."</td> 
 		<td>" . $row['Pregunta'] ."</td>
-		<td>" . $row['Respuesta'] ."</td>
 		<td>" . $row['Complejidad'] ."</td>
-		<td>" . $row['User_Email'] ."</td>
 		<td>
-			<button onClick='ActualizacionPregunta(".$row['Numero_Pregunta'].")'>Editar</button></td>
+			<button onClick='ContestarPregunta(".$row['Numero_Pregunta'].")'>Responder</button></td>
 	</tr>"; 
 	
 	}
@@ -58,13 +52,13 @@ else{
 			
 			x.onreadystatechange = function(){
 				if(x.readyState==4){
-					document.getElementById("FormularioActualizacion").innerHTML=x.responseText;	
+					document.getElementById("FormularioPregunta").innerHTML=x.responseText;	
 				}
 			};
 			
-			function ActualizacionPregunta(nPregunta){
+			function ContestarPregunta(nPregunta){
 				
-				x.open("GET","FormularioActualizacion.php?nPregunta="+nPregunta,true);
+				x.open("GET","FormularioPregunta.php?nPregunta="+nPregunta,true);
 				x.send();
 				
 			}
@@ -73,7 +67,7 @@ else{
 	</head>
 	<body>
 	
-		<div id="FormularioActualizacion"></div>
+		<div id="FormularioPregunta"></div>
 	
 	</body>
 </html>
