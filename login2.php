@@ -83,6 +83,8 @@ if(isset($_POST['Email'])){
 				$int++;
 			
 				$sentencia = "UPDATE Usuario SET Intentos='$int' WHERE email='$email'";
+				
+				echo "Has introducido mal la contraseña, Intento numero: '$int'";
 
 				if(!$mysqli->query($sentencia))
 					die('Error: '.$mysqli->error);

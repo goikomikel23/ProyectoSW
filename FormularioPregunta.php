@@ -2,18 +2,53 @@
 include "Funciones.php";
 session_start();
 
+if(isset($_GET['nPregunta'])){
 $nPregunta = $_GET['nPregunta'];
 $_SESSION['nPregunta'] = $nPregunta;
+}
+
+$nPregunta = $_SESSION['nPregunta'];
+
 
 $mysqli = ConectarBD();
 
-$Pregunta = $mysqli->query("select Pregunta,Respuesta,Complejidad from Preguntas where Numero_Pregunta=".$nPregunta);
+$Pregunta = $mysqli->query("select Pregunta,Respuesta from Preguntas where Numero_Pregunta=".$nPregunta);
 
 $row = $Pregunta->fetch_assoc();
 
+$mysqli->close();
+
 $Enun = $row['Pregunta'];
 $Respuesta = $row['Respuesta'];
-$Complejidad = $row['Complejidad'];
+
+if (isset($_POST['RespuestaPost'])){
+	
+	$RespuestaPost = $_POST['RespuestaPost'];
+	$email = $_SESSION['UsuarioReg'];
+	
+	if($Respuesta==$RespuestaPost){	
+	
+	SumarAciertos($email);
+	
+	echo "<script language='javascript'>alert('Respuesta Correcta');</script>";
+	echo "<a href='verResultados.php'>Ver Resultados</a>";
+	
+	exit();
+	
+	} else {
+		
+	SumarFallos($email);
+	
+	echo "<script language='javascript'>alert('Respuesta Incorrecta');</script>";
+	echo "<a href='verResultados.php'>Ver Resultados</a>";
+	
+	exit();
+	
+	}
+	
+	
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -24,41 +59,21 @@ $Complejidad = $row['Complejidad'];
 	</head>
 	<body>
 		
-		<form id="ActualizarPregunta" name="ActualizarPregunta" action="ActualizarPregunta.php" method="POST">
+		<br/>
+		<br/>
+		<?php echo $Enun; ?>
+		
+		<form id="contestarPregunta" name="contestarPregunta" action="FormularioPregunta.php" method="POST">
 			
-			<p>
-				Pregunta:
-				</br>
-				<textarea rows="4" cols="50" name="Pregunta" id="Pregunta" placeholder="Tu Pregunta" required>
-				<?php echo $Enun; ?>
-				</textarea>
-			</p>
 	
 			<p>
 				Respuesta:
 				</br>
-				<textarea rows="4" cols="50" name="Respuesta" id="Respuesta" placeholder="Tu Respuesta" required>
-				<?php echo $Respuesta; ?>
-				</textarea>
+				<input type="text" name="RespuestaPost"/>
 			</p>
 
 			<p>
-				Complejidad:
-				</br>
-				<input type="radio" name="Complejidad" value="1" id="Complejidad"/>
-				1
-				<input type="radio" name="Complejidad" value="2" id="Complejidad"/>
-				2
-				<input type="radio" name="Complejidad" value="3" id="Complejidad"/>
-				3
-				<input type="radio" name="Complejidad" value="4" id="Complejidad"/>
-				4
-				<input type="radio" name="Complejidad" value="5" id="Complejidad"/>
-				5
-			</p>
-
-			<p>
-				<input type="submit" value="Actualizar"/>
+				<input type="submit" value="Enviar"/>
 			</p>		
 		</form>
 		<a href="menuPreguntas.php">Volver</a>

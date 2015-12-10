@@ -1,3 +1,28 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<script lang="javascript">
+		
+			x = new XMLHttpRequest();
+			
+			x.onreadystatechange = function(){
+				if(x.readyState==4){
+					document.getElementById("usuarioDesbloqueado").innerHTML=x.responseText;	
+				}
+			};
+			
+			function desbloquearUsuario(email){
+				
+				x.open("POST","desbloquearUsuarios.php",true);
+				x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				x.send("email="+email);
+				
+			}
+		
+		</script>
+	</head>
+	<body>
+
 <?php
 
 include "Funciones.php";
@@ -64,28 +89,6 @@ if(($_SESSION['Rol'])=='Administrador'){
 	}
 ?>
 
-<html>
-	<head>
-		<script lang="javascript">
-		
-			x = new XMLHttpRequest();
-			
-			x.onreadystatechange = function(){
-				if(x.readyState==4){
-					document.getElementById("usuarioDesbloqueado").innerHTML=x.responseText;	
-				}
-			};
-			
-			function desbloquearUsuario(email){
-				
-				x.open("GET","desbloquearUsuarios.php?email="+email,true);
-				x.send();
-				
-			}
-		
-		</script>
-	</head>
-	<body>
 	
 		<div id="usuarioDesbloqueado"></div>
 	

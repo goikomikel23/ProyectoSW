@@ -1,5 +1,5 @@
 <?php
 
-echo $_GET['email'];
+echo $_POST['email'];
 	
 ?>

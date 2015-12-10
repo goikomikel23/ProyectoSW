@@ -26,6 +26,7 @@ echo "
 	
 echo "</table>"; 
 
+echo "<a href='contestarPreguntas.php'>Volver</a>";
 	
 	
 ?>

@@ -8,6 +8,8 @@ if($_SESSION['Rol']){
 	
 
 echo $_SESSION['UsuarioReg'];
+echo "<br/><a href='layout.html'>Pagina de Inicio</a>";
+
 
 
 $mysqli = ConectarBD();
