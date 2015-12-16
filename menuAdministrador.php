@@ -13,7 +13,7 @@ echo $_SESSION['UsuarioReg'];
 		<br/>
 		<br/>
 		
-		<a href="usuariosBloqueados.php">Desbloquear Usuarios</a>
+		<a href="usuariosBloqueados2.php">Desbloquear Usuarios</a>
 		
 		<br/>
 		<br/>
