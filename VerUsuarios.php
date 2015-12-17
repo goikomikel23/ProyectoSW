@@ -21,6 +21,7 @@ echo "
 		<th> Especialidad </th>
 		<th> Intereses </th>
 		<th> Rol </th>
+		<th> Imagen </th>
 		<th> R. Correctas </th>
 		<th> R. Incorrectas </th>
 	</tr>";
@@ -38,6 +39,9 @@ echo "
 		<td>" . $row['Especialidad'] ."</td>
 		<td>" . $row['Intereses'] ."</td>
 		<td>" . $row['Rol'] ."</td>
+		<td><img heigth='50%' width='50%' src='data:image/jpeg;base64,";
+		echo(base64_encode($row['Imagen']));
+		echo "'/></td>
 		<td>" . $row['RCorrectas'] ."</td>
 		<td>" . $row['RIncorrectas'] ."</td>
 		
